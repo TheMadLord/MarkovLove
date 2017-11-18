@@ -8,10 +8,10 @@ class ConversationNode;
 
 class Conversation{
 private:
-    std::map<std::string, ConversationNode* > nodes;
 public:
-    ConversationNode* entrypoints;
-    std::string getVarValue(std::string varName);
+
+    std::map<std::string, ConversationNode* > nodes;
+    std::vector<ConversationNode*> entrypoints;
     ConversationNode* getNode(std::string name);
     Conversation();
 };

@@ -15,12 +15,14 @@
 using namespace std;
 
 int main () {
+
+    parseFile("L1t.txt");
+
 	float deltaTime;
 	sf::Clock clock;
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
     gui* my_gui = new gui(window);
 
-    parseFile("L1.txt");
 
     // START OF GAME LOOP
     while (window->isOpen()) {
@@ -56,7 +58,6 @@ int main () {
         my_gui->my_window->draw(my_gui->getGirl(my_gui->current_girl)); // might have to alter depending on frame and on_date/not
 
         my_gui->my_window->display();
-
     }
 	delete my_gui;
 	delete window;
