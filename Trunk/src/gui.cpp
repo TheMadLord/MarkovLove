@@ -65,6 +65,7 @@ gui::gui(sf::RenderWindow* window) {
     text_positions["option2"] = {30,520};
     text_positions["girls_response"] = {70,200};
 
+    //button_functions["button_1"] = my_static_function;
 }
 
 gui::~gui() {

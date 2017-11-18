@@ -36,7 +36,7 @@ int main () {
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
             // collision w/ buttons
-            //CHANGE 'CAUSE BUTTONS ARE STORED DIFFERENTLY AS OF RN
+            // CHANGE 'CAUSE BUTTONS ARE STORED DIFFERENTLY AS OF RN
             /*
             for (std::map<std::string, sf::Sprite>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
                 if (my_gui->iter->second->getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*my_window)))) {
@@ -55,7 +55,7 @@ int main () {
         // ALL DRAW CODE GOES HERE.
         //maybe eventually move this all to the my_gui->update() function
         my_gui->my_window->draw(my_gui->getBkg(my_gui->current_background));
-        my_gui->my_window->draw(my_gui->getGirl(my_gui->current_girl)); // might have to alter depending on frame and on_date/not
+        //my_gui->my_window->draw(my_gui->getGirl(my_gui->current_girl)); // might have to alter depending on frame and on_date/not
 
         my_gui->my_window->display();
     }

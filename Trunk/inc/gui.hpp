@@ -6,10 +6,12 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <functional>
 #include "button.hpp"
 
 class gui {
 public:
+    typedef std::function<void(gui)> button_function;
     sf::RenderWindow* my_window;
     std::string current_background;
     std::string current_girl;
@@ -26,10 +28,13 @@ public:
     void display_Markov() {}
 private:
     sf::Font my_font;
+    static void my_static_function(gui* g);
     std::map<std::string,std::vector<int>> text_positions;
     std::map<std::string,sf::Texture> background_textures;
     std::map<std::string,sf::Sprite> background_sprites;
     std::map<std::string,sf::Texture> girls_textures;
     std::map<std::string,sf::Sprite> girls_sprites;
+    std::map<std::string,button> buttons;
+    std::map<std::string,button_function> button_functions;
     //std::map<std::string,button_child> buttons;
 };
