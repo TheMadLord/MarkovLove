@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++14  -rdynamic CMakeFiles/MarkovLove.dir/main.cpp.o  -o MarkovLove  -L/home/rtollefson/Documents/MarkovLove/Trunk/bin/Linux -Wl,-rpath,/home/rtollefson/Documents/MarkovLove/Trunk/bin/Linux -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio -lsfml-network 
