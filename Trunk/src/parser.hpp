@@ -27,4 +27,4 @@ public:
 
 };
 
-Conversation parseFile(std::string FileName);
+Conversation* parseFile(std::string FileName);

@@ -21,7 +21,7 @@ ConversationNode* parseELine(std::string line, std::map<std::string, std::string
     //parse name
     std::string branchs = line.substr(branchsStart+1, probStart-branchsStart-1);
     std::string probs = line.substr(probStart+1);
-
+    //
 
     std::cout << ret->name  + "\n" + ret->mood +  "\n" + ret->text+"\n" + branchs + "\n" + probs + "\n";
     return ret;
@@ -69,13 +69,14 @@ std::string fillVars(std::string line, std::map<std::string, std::string> *vars)
     return line;
 }
 
-Conversation parseFile(std::string FileName){
+Conversation* parseFile(std::string FileName){
   	std::ifstream myfile (FileName);
  	std::string line;
 	std::map<std::string, ConversationNode*> lines;
 	ConversationNode* cur;
     std::map<std::string, std::string> vars;
 	std::vector<ConversationNode*> entries;
+	Conversation* ret =  ret = new Conversation();
  	if (myfile.is_open()){
    		while ( getline (myfile,line) ){
             line = fillVars(line,&vars);
@@ -101,9 +102,12 @@ Conversation parseFile(std::string FileName){
   	}else{
 		 std::cout << "Unable to open file";
 	}
+	return ret;
 }
 
 ConversationNode::ConversationNode(){
 
+}
+Conversation::Conversation(){
 }
 
