@@ -1,0 +1,35 @@
+V S Name Sarah
+
+Entry D1
+
+E1
+Hey, +Name, What's up?
+Q2 30; D1 20; D2 50;
+
+Q2
+Walking to +Location, you?
+R 3
+Neat! Can I come with you? | D4 20; D4 80; 
+Awesome! Me too? | 
+Oh, alright. Well, bye! | 4
+
+D1
+Nothing Got to go.
+END
+
+D2
+Hey! It's great to see you!
+R 2
+Same. | END
+Hey, I was wondering if you'd like to go on a date with me.| DATE
+
+
+
+D3
+No, please don't!
+END
+
+D4
+Yes, please do!
+DATE
+
