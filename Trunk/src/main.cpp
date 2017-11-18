@@ -16,7 +16,7 @@ int main () {
 	float deltaTime;
 	sf::Clock clock;
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
-    gui* my_gui = new gui(window);
+    //gui* my_gui = new gui(window);
 
     while (window->isOpen()) {
         // INPUTS
