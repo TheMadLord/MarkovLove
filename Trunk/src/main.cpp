@@ -32,7 +32,7 @@ int main () {
 
         // UPDATE
         deltaTime = clock.restart().asSeconds();
-        my_gui->update(deltaTime);
+        my_gui->update(deltaTime, false);
 
         // RENDER
         //my_gui->update(deltaTime);
