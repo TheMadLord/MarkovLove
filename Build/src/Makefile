@@ -151,8 +151,50 @@ main.cpp.s:
 	cd /d C:\Users\Amalie\Desktop\GJ_Nov\MarkovLove\Build && $(MAKE) -f src\CMakeFiles\MarkovLove.dir\build.make src/CMakeFiles/MarkovLove.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+parser.o: parser.cpp.o
+
+.PHONY : parser.o
+
+# target to build an object file
+parser.cpp.o:
+	cd /home/rtollefson/Documents/MarkovLove/Build && $(MAKE) -f src/CMakeFiles/MarkovLove.dir/build.make src/CMakeFiles/MarkovLove.dir/parser.cpp.o
+.PHONY : parser.cpp.o
+
+parser.i: parser.cpp.i
+
+.PHONY : parser.i
+
+# target to preprocess a source file
+parser.cpp.i:
+	cd /home/rtollefson/Documents/MarkovLove/Build && $(MAKE) -f src/CMakeFiles/MarkovLove.dir/build.make src/CMakeFiles/MarkovLove.dir/parser.cpp.i
+.PHONY : parser.cpp.i
+
+parser.s: parser.cpp.s
+
+.PHONY : parser.s
+
+# target to generate assembly for a file
+parser.cpp.s:
+	cd /home/rtollefson/Documents/MarkovLove/Build && $(MAKE) -f src/CMakeFiles/MarkovLove.dir/build.make src/CMakeFiles/MarkovLove.dir/parser.cpp.s
+.PHONY : parser.cpp.s
+
 # Help Target
 help:
+<<<<<<< HEAD
+	@echo "The following are some of the valid targets for this Makefile:"
+	@echo "... all (the default if no target is provided)"
+	@echo "... clean"
+	@echo "... depend"
+	@echo "... rebuild_cache"
+	@echo "... MarkovLove"
+	@echo "... edit_cache"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... parser.o"
+	@echo "... parser.i"
+	@echo "... parser.s"
+=======
 	@echo The following are some of the valid targets for this Makefile:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
@@ -163,6 +205,7 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+>>>>>>> ef94ad5c25d3ee1d6d32cd6f12008f9dec535666
 .PHONY : help
 
 

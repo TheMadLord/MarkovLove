@@ -1,4 +1,23 @@
 #include <string>
 
-//+ : read Variable
-void parseConversation(char* FileName)
+class ConversationNode;
+
+class Conversation{
+private:
+//std::map Vars;
+public:
+    ConversationNode* entrypoints;
+    std::string getVarValue(std::string varName);
+    Conversation();
+};
+
+class ConversationNode{
+public:
+    std::string text;
+    ConversationNode* branchs;
+    float* Probalities;
+    ConversationNode();
+
+};
+
+Conversation parseFile(std::string FileName);

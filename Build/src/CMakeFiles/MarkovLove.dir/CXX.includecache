@@ -13,4 +13,24 @@ fstream
 -
 string
 -
+parser.hpp
+/home/rtollefson/Documents/MarkovLove/Trunk/src/parser.hpp
+
+/home/rtollefson/Documents/MarkovLove/Trunk/src/parser.cpp
+iostream
+-
+fstream
+-
+string
+-
+map
+-
+list
+-
+parser.hpp
+/home/rtollefson/Documents/MarkovLove/Trunk/src/parser.hpp
+
+/home/rtollefson/Documents/MarkovLove/Trunk/src/parser.hpp
+string
+-
 
