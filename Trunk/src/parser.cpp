@@ -18,12 +18,19 @@ ConversationNode* parseELine(std::string line, std::map<std::string, std::string
     ret->name = line.substr(0,moodStart);
     ret->mood = line.substr(moodStart+1,textStart-moodStart-1);
     ret->text = line.substr(textStart+1, branchsStart-textStart-1);
-    //parse name
     std::string branchs = line.substr(branchsStart+1, probStart-branchsStart-1);
     std::string probs = line.substr(probStart+1);
-    //
-
-    std::cout << ret->name  + "\n" + ret->mood +  "\n" + ret->text+"\n" + branchs + "\n" + probs + "\n";
+    //parse branchs
+    int i = 0;
+    while((i = branchs.find(",", i)) < line.size()){
+        ret->branchs.push_back(branchs.substr(0,i));
+        branchs = branchs.substr(i+1);
+    }
+    ret->branchs.push_back(branchs);
+    for(i = 0; i< ret->branchs.size(); i++){
+        std::cout << ret->branchs.at(i) + ", ";
+    }
+    std::cout << "\n";
     return ret;
 }
 
@@ -59,11 +66,9 @@ std::string fillVars(std::string line, std::map<std::string, std::string> *vars)
             std::string var = it->first;
             std::string value = it->second;
             int i = 0;
-            int p = 0;
             while((i = line.find("+" + var, i)) < line.size()){
                 outString = line.substr(0,i) +  (value)+  (line.substr(i + var.size()+1));
                 line = outString;
-                break;
             }
     }
     return line;
