@@ -35,7 +35,7 @@ int main () {
         my_gui->update(deltaTime);
 
         // RENDER
-        my_gui->update(deltaTime);
+        //my_gui->update(deltaTime);
     }
 	delete my_gui;
 	delete window;
