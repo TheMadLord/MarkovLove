@@ -1,5 +1,5 @@
 link_directories(${PROJECT_SOURCE_DIR}/bin/${CMAKE_SYSTEM_NAME})
-include_directories(${PROJECT_SOURCE_DIR}/exlibs/SFML/include)
+include_directories(${PROJECT_SOURCE_DIR}/extlibs/SFML/include)
 link_libraries(sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
 
 include_directories(${PROJECT_SOURCE_DIR}/inc)
@@ -11,6 +11,8 @@ set(PROJECT_FILES
 	${SRC}/main.cpp
 	${SRC}/parser.cpp
 	${SRC}/parser.hpp
+	${SRC}/gui.cpp
+	${INC}/gui.hpp
 )
 
 add_executable(MarkovLove ${PROJECT_FILES})
