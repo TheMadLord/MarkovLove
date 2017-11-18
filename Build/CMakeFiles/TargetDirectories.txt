@@ -1,5 +1,5 @@
-/home/rtollefson/Documents/MarkovLove/Build/CMakeFiles/rebuild_cache.dir
-/home/rtollefson/Documents/MarkovLove/Build/CMakeFiles/edit_cache.dir
-/home/rtollefson/Documents/MarkovLove/Build/src/CMakeFiles/rebuild_cache.dir
-/home/rtollefson/Documents/MarkovLove/Build/src/CMakeFiles/MarkovLove.dir
-/home/rtollefson/Documents/MarkovLove/Build/src/CMakeFiles/edit_cache.dir
+C:/Users/Amalie/Desktop/GJ_Nov/MarkovLove/Build/CMakeFiles/edit_cache.dir
+C:/Users/Amalie/Desktop/GJ_Nov/MarkovLove/Build/CMakeFiles/rebuild_cache.dir
+C:/Users/Amalie/Desktop/GJ_Nov/MarkovLove/Build/src/CMakeFiles/rebuild_cache.dir
+C:/Users/Amalie/Desktop/GJ_Nov/MarkovLove/Build/src/CMakeFiles/MarkovLove.dir
+C:/Users/Amalie/Desktop/GJ_Nov/MarkovLove/Build/src/CMakeFiles/edit_cache.dir

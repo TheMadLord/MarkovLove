@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/MarkovLove.dir/main.cpp.o"
+  "CMakeFiles/MarkovLove.dir/main.cpp.obj"
   "MarkovLove.pdb"
-  "MarkovLove"
+  "MarkovLove.exe"
+  "MarkovLove.exe.manifest"
+  "libMarkovLove.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.
