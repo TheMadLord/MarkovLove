@@ -5,8 +5,11 @@
 #include <string>
 
 gui::gui(sf::RenderWindow* window) {
+
     my_window = window;
+
     if (!my_font.loadFromFile("calibri.ttf")) { std::cout << "ERROR WITH LOADING FONT" << std::endl; }
+
     // initialize maps
     sf::Texture girl_1_u;
     if (!girl_1_u.loadFromFile("girl_1_u.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
@@ -24,13 +27,24 @@ gui::gui(sf::RenderWindow* window) {
     girls_sprites["girl_1_happy"] = sprite;
     sprite.setTexture(girls_textures["girl_1_s"]);
     girls_sprites["girl_1_sad"] = sprite;
+
+    //initialize text_positions
+    // onDATE (includes 10px matting)
+    // option 1: (30,430)
+    // option 2: (30, 520)
+    // girl's response: (70, 200)
+    text_positions["option1"] = {30,430};
+    text_positions["option2"] = {30,520};
+    text_positions["girls_response"] = {70,200};
+
 }
 
 gui::~gui() {
     // delete maps ?
 }
 
-void gui::update(float deltaTime, bool onDate = false) {
+void gui::update(float deltaTime, bool onDate, std::map<std::string, std::string> current_text) { // 2 - identifier, text to draw ?
+    // CURRENTLY ONLY DRAWS HAPPY GIRL TO SCREEN
     my_window->clear(sf::Color::Black);
 
     // ALL DRAW CODE GOES HERE
