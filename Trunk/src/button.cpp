@@ -1,8 +1,8 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
-
 #include <vector>
+#include "button.hpp"
 
 button::button(string image_name){
     sf::Texture texture;

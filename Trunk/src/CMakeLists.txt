@@ -13,6 +13,8 @@ set(PROJECT_FILES
 	${SRC}/parser.hpp
 	${SRC}/gui.cpp
 	${INC}/gui.hpp
+	${SRC}/button.cpp
+	${INC}/button.hpp
 )
 
 add_executable(MarkovLove ${PROJECT_FILES})
