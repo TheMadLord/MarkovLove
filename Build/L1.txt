@@ -28,7 +28,7 @@ E5|Upset What's the matter?
 G9|Nothing. Bye.|Y4|30
 G10|I'm not sure I want to talk about it.|Y3,Y8,Y12|60
 
-E6 Happy Hey, girl! What's goin' on!|END
+E6 Happy Hey, girl! What's goin' on!
 
 G1|#?|Y1,Y2,Y3,Y8|50
 G11|Hey! Wanna go to the LOCATION with me?|Y7,Y9|50

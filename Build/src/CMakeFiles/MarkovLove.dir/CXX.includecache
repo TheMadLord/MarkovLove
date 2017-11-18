@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/rtollefson/Documents/MarkovLove/Trunk/src/main.cpp
+C:/Users/Amalie/Desktop/GJ_Nov/MarkovLove/Trunk/src/main.cpp
 iostream
 -
 fstream
