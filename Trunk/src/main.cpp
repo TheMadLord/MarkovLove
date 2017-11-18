@@ -5,6 +5,7 @@
 
 #include "parser.hpp"
 #include "gui.hpp"
+#include "button.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
@@ -34,11 +35,13 @@ int main () {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
             // collision w/ buttons
             //CHANGE 'CAUSE BUTTONS ARE STORED DIFFERENTLY AS OF RN
+            /*
             for (std::map<std::string, sf::Sprite>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
                 if (my_gui->iter->second->getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*my_window)))) {
                     // is colliding
                 }
             }
+            */
         }
 
         // UPDATE

@@ -6,15 +6,16 @@
 #include <map>
 #include <string>
 #include <vector>
+#include "button.hpp"
 
 class gui {
 public:
     sf::RenderWindow* my_window;
     std::string current_background;
     std::string current_girl;
-    std::map<std::string, sf::Rect> on_date_buttons;
-    std::map<std::string, sf::Rect> main_menu_buttons;
-    std::map<std::string, sf::Rect> overworld_buttons;
+    std::map<std::string, sf::Rect<int>> on_date_buttons;
+    std::map<std::string, sf::Rect<int>> main_menu_buttons;
+    std::map<std::string, sf::Rect<int>> overworld_buttons;
     gui(sf::RenderWindow* window);
     ~gui();
     void update(float deltaTime);
@@ -30,8 +31,5 @@ private:
     std::map<std::string,sf::Sprite> background_sprites;
     std::map<std::string,sf::Texture> girls_textures;
     std::map<std::string,sf::Sprite> girls_sprites;
-    /*
-    std::map<std::string,sf::Texture> button_textures;
-    std::map<std::string,sf::Sprite> button_sprites;
-    */
+    //std::map<std::string,button_child> buttons;
 };

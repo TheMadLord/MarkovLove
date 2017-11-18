@@ -4,27 +4,35 @@
 
 #include <vector>
 
-Button(){
+button::button(string image_name){
+    sf::Texture texture;
+    if(!texture.loadFromFile(image_name)) { std::cout << "ERROR WITH LOADING image" << std::endl; }
 
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
 }
 
-~Button(){
-
+button::~button(){
+    // delete shit, i suppose
 }
 
-sf::Rect getRect(){
+sf::Rect button::getRect(){
     return rect;
 }
 
-sf::Sprite getSprite(){
+sf::Sprite button::getSprite(){
     return sprite;
 }
 
-std::vector<int> getPos(){
+std::vector<int> button::getPos(){
     return position;
 }
 
-void take_effect(){
-    // do whatever the button does
+void button::take_effect(){
+    // do whatever the button does ...
     // might need gui?
+}
+
+void button_x::take_effect(){
+
 }

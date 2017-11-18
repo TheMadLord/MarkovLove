@@ -3,11 +3,11 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
-class Button {
+class button {
 public:
-    Button();
-    ~Button();
-    sf::Rect getRect();
+    button();
+    ~button();
+    sf::Rect<int> getRect();
     sf::Sprite getSprite();
     std::vector<int> getPos();
     void take_effect();
@@ -15,6 +15,8 @@ private:
     std::string name;
     sf::Sprite sprite;
     sf::Texture texture;
-    sf::Rect rect;
+    sf::Rect<int> rect;
     std::vector<int> position;
 };
+
+class button_x: public button { }; // UHH

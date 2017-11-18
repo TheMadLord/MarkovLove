@@ -112,14 +112,7 @@ sf::Sprite gui::getBkg(std::string name){
 }
 
 sf::Sprite gui::getButton(std::string name){
-    // find girl by string key
-    std::map<std::string, sf::Sprite>::iterator iter = button_sprites.find(name);
-    if (iter == button_sprites.end()){
-        std::cout << "button sprite not found" << std::endl;
-        return sf::Sprite();
-    } else {
-        return iter->second;
-    }
+    // UNDER CONSTRUCTION
 }
 
 void gui::drawText(std::string text, std::vector<int> location){
