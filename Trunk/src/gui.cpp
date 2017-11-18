@@ -50,7 +50,12 @@ gui::gui(sf::RenderWindow* window) {
     background_sprites["main_menu_spr"] = s;
 
     // buttons
-    // ...
+    buttons["main_menu_play"] = button("main_menu_play");
+    buttons["main_menu_options"] = button("main_menu_options");
+    button_functions["main_menu_play"] = button_function_main_menu_play;
+
+    // implementation:
+    // my_gui->button_functions[my_gui->buttons->name]();
 
     // button groups
     // ...
@@ -123,4 +128,12 @@ void gui::drawText(std::string text, std::vector<int> location){
     my_text_object.setFillColor(sf::Color::Black);
     //text.setStyle(sf::Text::Bold | sf::Text::Underlined); THIS MAKES TEXT BOLD AND UNDERLINED
     my_window->draw(my_text_object);
+}
+
+void gui::button_function_main_menu_play(){
+
+}
+
+void gui::button_function_main_menu_options(){
+
 }

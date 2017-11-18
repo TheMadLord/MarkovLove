@@ -5,6 +5,7 @@
 
 class button {
 public:
+    button(std::string);
     button();
     ~button();
     sf::Rect<int> getRect();
@@ -18,5 +19,3 @@ private:
     sf::Rect<int> rect;
     std::vector<int> position;
 };
-
-class button_x: public button { }; // UHH

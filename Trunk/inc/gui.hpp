@@ -11,7 +11,7 @@
 
 class gui {
 public:
-    typedef std::function<void(gui)> button_function;
+    typedef std::function<void()> button_function;
     sf::RenderWindow* my_window;
     std::string current_background;
     std::string current_girl;
@@ -26,6 +26,10 @@ public:
     sf::Sprite getButton(std::string name);
     void drawText(std::string text, std::vector<int> location);
     void display_Markov() {}
+
+    static void button_function_main_menu_play();
+    static void button_function_main_menu_options();
+
 private:
     sf::Font my_font;
     static void my_static_function(gui* g);

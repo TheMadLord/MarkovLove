@@ -1,10 +1,11 @@
 
+#include <iostream>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <vector>
 #include "button.hpp"
 
-button::button(string image_name){
+button::button(std::string image_name){
     sf::Texture texture;
     if(!texture.loadFromFile(image_name)) { std::cout << "ERROR WITH LOADING image" << std::endl; }
 
@@ -12,11 +13,13 @@ button::button(string image_name){
     sprite.setTexture(texture);
 }
 
+button::button() {}
+
 button::~button(){
     // delete shit, i suppose
 }
 
-sf::Rect button::getRect(){
+sf::Rect<int> button::getRect(){
     return rect;
 }
 
@@ -33,6 +36,4 @@ void button::take_effect(){
     // might need gui?
 }
 
-void button_x::take_effect(){
 
-}
