@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/MarkovLove.dir/main.cpp.o"
+  "CMakeFiles/MarkovLove.dir/parser.cpp.o"
   "MarkovLove.pdb"
   "MarkovLove"
 )

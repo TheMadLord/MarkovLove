@@ -3,3 +3,7 @@
 
 src/CMakeFiles/MarkovLove.dir/main.cpp.o
  /home/rtollefson/Documents/MarkovLove/Trunk/src/main.cpp
+ /home/rtollefson/Documents/MarkovLove/Trunk/src/parser.hpp
+src/CMakeFiles/MarkovLove.dir/parser.cpp.o
+ /home/rtollefson/Documents/MarkovLove/Trunk/src/parser.cpp
+ /home/rtollefson/Documents/MarkovLove/Trunk/src/parser.hpp

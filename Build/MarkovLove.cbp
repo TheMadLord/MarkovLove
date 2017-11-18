@@ -87,6 +87,12 @@
 		<Unit filename="/home/rtollefson/Documents/MarkovLove/Trunk/src/main.cpp">
 			<Option target="MarkovLove"/>
 		</Unit>
+		<Unit filename="/home/rtollefson/Documents/MarkovLove/Trunk/src/parser.cpp">
+			<Option target="MarkovLove"/>
+		</Unit>
+		<Unit filename="/home/rtollefson/Documents/MarkovLove/Trunk/src/parser.hpp">
+			<Option target="MarkovLove"/>
+		</Unit>
 		<Unit filename="/home/rtollefson/Documents/MarkovLove/Trunk/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

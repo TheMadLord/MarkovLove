@@ -9,6 +9,8 @@ set(SRC ${PROJECT_SOURCE_DIR}/src)
 
 set(PROJECT_FILES
 	${SRC}/main.cpp
+	${SRC}/parser.cpp
+	${SRC}/parser.hpp
 )
 
 add_executable(MarkovLove ${PROJECT_FILES})

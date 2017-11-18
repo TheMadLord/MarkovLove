@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/rtollefson/Documents/MarkovLove/Trunk/src/main.cpp" "/home/rtollefson/Documents/MarkovLove/Build/src/CMakeFiles/MarkovLove.dir/main.cpp.o"
+  "/home/rtollefson/Documents/MarkovLove/Trunk/src/parser.cpp" "/home/rtollefson/Documents/MarkovLove/Build/src/CMakeFiles/MarkovLove.dir/parser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
