@@ -11,6 +11,7 @@ gui::gui(sf::RenderWindow* window) {
     if (!my_font.loadFromFile("calibri.ttf")) { std::cout << "ERROR WITH LOADING FONT" << std::endl; }
 
     // initialize maps
+    //girls
     sf::Texture girl_1_u;
     if (!girl_1_u.loadFromFile("girl_1_u.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
     sf::Texture girl_1_h;
@@ -27,6 +28,25 @@ gui::gui(sf::RenderWindow* window) {
     girls_sprites["girl_1_happy"] = sprite;
     sprite.setTexture(girls_textures["girl_1_s"]);
     girls_sprites["girl_1_sad"] = sprite;
+
+    // bkgs
+    sf::Texture t;
+    if(!t.loadFromFile("forrest_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    girls_textures["forrest_texture"] = t;
+    if(!t.loadFromFile("bakery_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    girls_textures["bakery_texture"] = t;
+    if(!t.loadFromFile("library_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    girls_textures["library_texture"] = t;
+    sf::Sprite s;
+    s.setTexture(background_textures["forrest_texture"]);
+    background_sprites["forrest_spr"] = s
+    s.setTexture(background_textures["bakery_texture"]);
+    background_sprites["bakery_spr"] = s
+    s.setTexture(background_textures["library_texture"]);
+    background_sprites["library_spr"] = s
+
+    // buttons
+    // ...
 
     //initialize text_positions
     // onDATE (includes 10px matting)
