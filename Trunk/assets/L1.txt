@@ -1,0 +1,46 @@
+# Upset, Sad, Happy, None
+# Text | Options | % likely
+
+V|S|Name|Sarah
+
+E1|None Hey, +Name, What's up?
+
+G1|Walking to the +Location, you?|Y1,Y2,Y3,Y8|30
+G2|Nothing much, gotta go.|Y4|20
+G3|Hey! It's great to see you!|Y5,Y6,Y8|50
+
+E2|None My dad could beat up your dad!
+
+G4|Oh, nice.|Y4|20
+G5|Wow!|Y11,Y8|80
+
+E3|None Hey Babe show me those tits!!!
+
+G6|Wow!|Y11|50
+G7|Ew; leave me alone.|Y4|50
+
+E4|Sad Hey, you alright?
+
+G8|I'm sorry, I just can't do this right now.|Y4
+
+E5|Upset What's the matter?
+
+G9|Nothing. Bye.|Y4|30
+G10|I'm not sure I want to talk about it.|Y3,Y8,Y12|60
+
+E6 Happy Hey, girl! What's goin' on!
+
+G1|#?|Y1,Y2,Y3,Y8|50
+G11|Hey! Wanna go to the LOCATION with me?|Y7,Y9|50
+
+Y1|Neat! Can I come with you?|G5,G7
+Y2|Awesome! Me too!|G5,G6
+Y3|Oh, alright. Well, bye!|END
+G5|No, please don't.|END
+G6|Great! Let's go together.|END
+G7|Yeah! Let's go!|DATE.
+Y8|Hey, I was wondering if you'd like to go on a date with me.|G9,G10|20,80 
+G9|Sorry, I'm pretty busy.|END
+G10|Yes! I'd love to!|DATE.
+Y11|Ma'am, would you do me the honor of joining me at LOCATION?|G10|100
+Y12|Hey, you can talk to me! How about we go talk it over at LOCATION?|G5,G7,G10|40,30,30
