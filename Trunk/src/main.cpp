@@ -18,7 +18,6 @@ int main () {
 	sf::Clock clock;
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
     gui* my_gui = new gui(window);
-    sf::Mouse* mouse;
 
     parseFile("L1.txt");
 
@@ -32,14 +31,14 @@ int main () {
                 window->close();
             }
         }
-        if (mouse->isButtonPressed(sf::Mouse::Button::Left)){
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
             // collision w/ buttons
-                /*
-                for (std::map<std::string, sf::Sprite>::iterator iter = girls_sprites.begin(); iter != girls_sprites.end(); iter++) {
-                    my_window->draw(iter->second);
-                    //std::cout << iter->first << std::endl; // prints name of thing getting drawn
+            //CHANGE 'CAUSE BUTTONS ARE STORED DIFFERENTLY AS OF RN
+            for (std::map<std::string, sf::Sprite>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
+                if (my_gui->iter->second->getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*my_window)))) {
+                    // is colliding
                 }
-                */
+            }
         }
 
         // UPDATE

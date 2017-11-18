@@ -52,6 +52,9 @@ gui::gui(sf::RenderWindow* window) {
     // buttons
     // ...
 
+    // button groups
+    // ...
+
     // set current-strings
     current_background = "main_menu_spr";
     current_girl = "none";
