@@ -5,18 +5,22 @@
 
 #include "parser.hpp"
 #include "gui.hpp"
+
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/System/Clock.hpp>
+#include <SFML/Window/Mouse.hpp>
 
 using namespace std;
 
 int main () {
-	parseFile("L1.txt");
 	float deltaTime;
 	sf::Clock clock;
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
     gui* my_gui = new gui(window);
+    sf::Mouse* mouse;
+
+    parseFile("L1.txt");
 
     // START OF GAME LOOP
     while (window->isOpen()) {
@@ -24,17 +28,33 @@ int main () {
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window->pollEvent(event)) {
-            // "close requested" event: we close the window
             if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                 window->close();
             }
+        }
+        if (mouse->isButtonPressed(sf::Mouse::Button::Left)){
+            // collision w/ buttons
+                /*
+                for (std::map<std::string, sf::Sprite>::iterator iter = girls_sprites.begin(); iter != girls_sprites.end(); iter++) {
+                    my_window->draw(iter->second);
+                    //std::cout << iter->first << std::endl; // prints name of thing getting drawn
+                }
+                */
         }
 
         // UPDATE
         deltaTime = clock.restart().asSeconds();
 
         // RENDER
-        //my_gui->update(deltaTime, false, AH);
+        my_gui->my_window->clear(sf::Color::Black);
+
+        // ALL DRAW CODE GOES HERE.
+        //maybe eventually move this all to the my_gui->update() function
+        my_gui->my_window->draw(my_gui->getBkg(my_gui->current_background));
+        my_gui->my_window->draw(my_gui->getGirl(my_gui->current_girl)); // might have to alter depending on frame and on_date/not
+
+        my_gui->my_window->display();
+
     }
 	delete my_gui;
 	delete window;

@@ -37,16 +37,24 @@ gui::gui(sf::RenderWindow* window) {
     girls_textures["bakery_texture"] = t;
     if(!t.loadFromFile("library_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
     girls_textures["library_texture"] = t;
+    if(!t.loadFromFile("main_menu_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    girls_textures["main_menu_texture"] = t;
     sf::Sprite s;
     s.setTexture(background_textures["forrest_texture"]);
-    background_sprites["forrest_spr"] = s
+    background_sprites["forrest_spr"] = s;
     s.setTexture(background_textures["bakery_texture"]);
-    background_sprites["bakery_spr"] = s
+    background_sprites["bakery_spr"] = s;
     s.setTexture(background_textures["library_texture"]);
-    background_sprites["library_spr"] = s
+    background_sprites["library_spr"] = s;
+    s.setTexture(background_textures["main_menu_texture"]);
+    background_sprites["main_menu_spr"] = s;
 
     // buttons
     // ...
+
+    // set current-strings
+    current_background = "main_menu_spr";
+    current_girl = "none";
 
     //initialize text_positions
     // onDATE (includes 10px matting)
@@ -60,20 +68,11 @@ gui::gui(sf::RenderWindow* window) {
 }
 
 gui::~gui() {
-    // delete maps ?
+    //delete background_textures; ?
 }
 
-void gui::update(float deltaTime, bool onDate, std::map<std::string, std::string> current_text) { // 2 - identifier, text to draw ?
+void gui::update(float deltaTime) { // 2 - identifier, text to draw ?
     // CURRENTLY ONLY DRAWS HAPPY GIRL TO SCREEN
-    my_window->clear(sf::Color::Black);
-
-    // ALL DRAW CODE GOES HERE
-    if (onDate){
-        // draw girl and text in on-date format
-    } else {
-        // draw things as if you're not on a date with a girl
-        // this includes scenarios where you're visiting a shop or something on your own
-    }
 
     //my_window->draw(sprite);
     /*
@@ -83,11 +82,12 @@ void gui::update(float deltaTime, bool onDate, std::map<std::string, std::string
     }
     */
     my_window->draw(girls_sprites.begin()->second);
-    my_window->display();
+
 }
 
 sf::Sprite gui::getGirl(std::string name){
     // find girl by string key
+    if (name == "none") { return sf::Sprite(); }
     std::map<std::string, sf::Sprite>::iterator iter = girls_sprites.find(name);
     if (iter == girls_sprites.end()){
         std::cout << "girl sprite not found" << std::endl;
