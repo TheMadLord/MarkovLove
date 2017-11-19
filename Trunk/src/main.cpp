@@ -24,8 +24,8 @@ int main () {
     gui* my_gui = new gui(window);
     // START OF GAME LOOP
 
-    //std::cout << my_gui->overworld_buttons["overworld_forrest"].getRect().height << std::endl;
-    //std::cout << my_gui->overworld_buttons["overworld_forrest"].getRect().width << std::endl;
+    std::cout << std::to_string(my_gui->overworld_buttons["overworld_forrest"]->getRect().height) << std::endl;
+    std::cout << std::to_string(my_gui->overworld_buttons["overworld_forrest"]->getRect().width) << std::endl;
 
     while (window->isOpen()) {
         // INPUTS
@@ -56,6 +56,8 @@ int main () {
                     }
                 } else if (my_gui->current_state == "overworld"){
                     for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
+                        std::cout << "bloop" << std::endl;
+                        std::cout << iter->second->getName();
                         if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
                             if (iter->second->getName() == "overworld_forrest"){
                                 my_gui->current_background = "forrest_bkg";

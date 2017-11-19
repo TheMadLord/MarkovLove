@@ -30,7 +30,6 @@ gui::gui(sf::RenderWindow* window) {
     girls_sprites["girl_1_sad"] = sprite;
 
     //Virgo
-    //Virgo_Enamored.png
     sf::Texture V_E;
     if (!V_E.loadFromFile("Virgo_Enamored.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
     sf::Sprite V_E_s;
@@ -80,9 +79,9 @@ gui::gui(sf::RenderWindow* window) {
     buttons["main_menu_play"] = button("main_menu_play");
     buttons["main_menu_options"] = button("main_menu_options");
     buttons["overworld_forrest"] = button("overworld_forrest");
-    buttons["overworld_menu"] = button("overworld_forrest");
-    buttons["overworld_library"] = button("overworld_forrest");
-    buttons["overworld_bakery"] = button("overworld_forrest");
+    buttons["overworld_menu"] = button("overworld_forrest", "overworld_menu");
+    buttons["overworld_library"] = button("overworld_forrest", "overworld_library");
+    buttons["overworld_bakery"] = button("overworld_forrest", "overworld_bakery");
 
     // button groups
     main_menu_buttons["play"] = &buttons["main_menu_play"];
@@ -98,10 +97,10 @@ gui::gui(sf::RenderWindow* window) {
     overworld_buttons["overworld_menu"]->getSprite().setPosition(0,300);
     overworld_buttons["overworld_library"]->getSprite().setPosition(400,300);
     overworld_buttons["overworld_bakery"]->getSprite().setPosition(400,0);
-    overworld_buttons["overworld_forrest"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
-    overworld_buttons["overworld_menu"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
-    overworld_buttons["overworld_library"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
-    overworld_buttons["overworld_bakery"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
+    overworld_buttons["overworld_forrest"]->getSprite().setColor(sf::Color(255, 0, 255, 128));
+    overworld_buttons["overworld_menu"]->getSprite().setColor(sf::Color(0, 0, 255, 127));
+    overworld_buttons["overworld_library"]->getSprite().setColor(sf::Color(0, 255, 0, 128));
+    overworld_buttons["overworld_bakery"]->getSprite().setColor(sf::Color(255, 0, 0, 128));
 
     // set current-strings
     current_background = "main_menu_bkg";
@@ -140,7 +139,7 @@ sf::Sprite gui::getGirl(std::string name){
     if (name == "none") { return sf::Sprite(); }
     std::map<std::string, sf::Sprite>::iterator iter = girls_sprites.find(name);
     if (iter == girls_sprites.end()){
-        std::cout << "girl sprite \""+name+"\" not found" << std::endl;
+        //std::cout << "girl sprite \""+name+"\" not found" << std::endl;
         return sf::Sprite();
     } else {
         return iter->second;
