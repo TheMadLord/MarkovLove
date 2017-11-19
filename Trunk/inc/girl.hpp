@@ -33,7 +33,7 @@ public:
 
     void setLocation(int i){
         if(i >= GIRL_LOC_MISSING and i<= GIRL_LOC_LIBRARY){
-            locaction = i;
+            location = i;
         }
     }
 
