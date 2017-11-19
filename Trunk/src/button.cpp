@@ -33,6 +33,7 @@ button::~button(){
 }
 
 sf::Rect<int> button::getRect(){
+    rect = sf::Rect<int>(sprite.getGlobalBounds());
     return rect;
 }
 
@@ -40,13 +41,8 @@ sf::Sprite& button::getSprite(){
     return sprite;
 }
 
-std::vector<int> button::getPos(){
-    return position;
-}
-
-void button::take_effect(){
-    // do whatever the button does ...
-    // might need gui?
+std::string button::getName(){
+    return name;
 }
 
 

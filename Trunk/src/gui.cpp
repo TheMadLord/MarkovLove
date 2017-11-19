@@ -53,6 +53,7 @@ gui::gui(sf::RenderWindow* window) {
     buttons["main_menu_play"] = button("main_menu_play");
     buttons["main_menu_options"] = button("main_menu_options");
     button_functions["main_menu_play"] = button_function_main_menu_play;
+    button_functions["main_menu_options"] = button_function_main_menu_options;
 
     // implementation:
     // my_gui->button_functions[my_gui->buttons->name]();
@@ -136,11 +137,12 @@ void gui::drawText(std::string text, std::vector<int> location){
 }
 
 void gui::button_function_main_menu_play(){
-
+    //current_state = "overworld";
+    //current_background = "forrest_spr";
 }
 
 void gui::button_function_main_menu_options(){
-
+    my_window->close();
 }
 
-
+sf::RenderWindow* gui::my_window = nullptr;

@@ -12,12 +12,10 @@ public:
     ~button();
     sf::Rect<int> getRect();
     sf::Sprite& getSprite();
-    std::vector<int> getPos();
-    void take_effect();
+    std::string getName();
 protected:
     std::string name;
     sf::Sprite sprite;
     sf::Texture texture;
     sf::Rect<int> rect;
-    std::vector<int> position;
 };

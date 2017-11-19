@@ -37,13 +37,21 @@ int main () {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
             // collision w/ buttons
             // CHANGE 'CAUSE BUTTONS ARE STORED DIFFERENTLY AS OF RN
-            /*
-            for (std::map<std::string, sf::Sprite>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
-                if (my_gui->iter->second->getGlobalBounds().contains(sf::Vector2f(sf::Mouse::getPosition(*my_window)))) {
-                    // is colliding
+            if (my_gui->current_state == "menu"){
+                for (std::map<std::string, button*>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
+                    if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
+                        if (iter->second->getName() == "main_menu_play"){
+                            my_gui->current_state = "overworld";
+                            my_gui->current_background = "forrest_spr";
+                        } else if (iter->second->getName() == "main_menu_options") {
+                            //my_gui->current_state =
+                            std::cout << "\noptions" << std::endl;
+                            window->close();
+                        }
+                        //my_gui->button_functions[iter->second->getName()]();
+                    }
                 }
             }
-            */
         }
 
         // UPDATE
@@ -53,7 +61,6 @@ int main () {
         my_gui->my_window->clear(sf::Color::Black);
 
         // ALL DRAW CODE GOES HERE.
-        //maybe eventually move this all to the my_gui->update() function
         my_gui->my_window->draw(my_gui->getBkg(my_gui->current_background));
         if (my_gui->current_state == "menu"){
             for (std::map<std::string, button*>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
@@ -73,7 +80,6 @@ int main () {
             std::cout << "CURRENT STATE NOT VALID" << std::endl;
             break;
         }
-        //my_gui->my_window->draw(my_gui->getGirl(my_gui->current_girl)); // might have to alter depending on frame and on_date/not
 
         my_gui->my_window->display();
     }
