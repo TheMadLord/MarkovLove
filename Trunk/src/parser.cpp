@@ -157,3 +157,43 @@ ConversationNode::ConversationNode(){
 Conversation::Conversation(){
 }
 
+
+ConversationHandler::ConversationHandler(Conversation* con){
+    this->convo = con;
+}
+
+std::vector<std::string>ConversationHandler::getStartText(){
+    std::vector<std::string> ret;
+    ret.push_back("");
+    int i = rand() % convo->entrypoints.size();
+    int j;
+    do{
+        j = rand() % convo->entrypoints.size();
+    }while(j == i);
+    ret.push_back((top = convo->entrypoints.at(i))->text);
+    ret.push_back((buttom = convo->entrypoints.at(j))->text);
+    return ret;
+}
+
+std::vector<std::string>ConversationHandler::getText(int i){
+    ConversationNode* root = (i == 0)? top:buttom;
+    float r = (rand() % 100)100.0f;
+    float t = 0;
+    int i;
+    for(i = 0; i < root->Probalities.size(); ++t){
+        if(r < t+root->Probalities.at(i)){
+            break;
+        }else{
+            t += root->Probalities.at(i);
+        }
+    }
+    ret.push_back(root->text);
+    int i = rand() % root->branchs.size();
+    int j;
+    do{
+        j = rand() % root->branchs.size();;
+    }while(j == i);
+    ret.push_back((top = root->branchs.at(i))->text);
+    ret.push_back((buttom = root->branchs.at(j))->text);
+    return ret;
+}

@@ -25,5 +25,15 @@ public:
     int mod;
     ConversationNode();
 };
+class ConversationHandler{
+private:
+    Conversation* convo;
+    ConversationNode* top;
+    ConversationNode* buttom;
+public:
+    ConversationHandler(Conversation* con);
+    std::vector<std::string> getText(int i);
+    std::vector<std::string> getStartText();
+};
 
 Conversation* parseFile(std::string FileName);
