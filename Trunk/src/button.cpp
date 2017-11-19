@@ -6,14 +6,27 @@
 #include "button.hpp"
 
 button::button(std::string image_name){
-    sf::Texture texture;
-    if(!texture.loadFromFile(image_name)) { std::cout << "ERROR WITH LOADING image" << std::endl; }
-
-    sf::Sprite sprite;
+    if(!texture.loadFromFile(image_name+".png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
     sprite.setTexture(texture);
+    name = image_name;
 }
 
 button::button() {}
+
+button::button(const button& b) {
+    //std::cout << "copying " << b.name << std::endl;
+    if(!texture.loadFromFile(b.name+".png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    sprite.setTexture(texture);
+    name = b.name;
+}
+
+button& button::operator=(const button& b) {
+    //std::cout << "copying " << b.name << std::endl;
+    if(!texture.loadFromFile(b.name+".png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    sprite.setTexture(texture);
+    name = b.name;
+    return *this;
+}
 
 button::~button(){
     // delete shit, i suppose
@@ -23,7 +36,7 @@ sf::Rect<int> button::getRect(){
     return rect;
 }
 
-sf::Sprite button::getSprite(){
+sf::Sprite& button::getSprite(){
     return sprite;
 }
 

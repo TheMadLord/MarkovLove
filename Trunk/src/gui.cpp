@@ -32,13 +32,13 @@ gui::gui(sf::RenderWindow* window) {
     // bkgs
     sf::Texture t;
     if(!t.loadFromFile("forrest_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
-    girls_textures["forrest_texture"] = t;
+    background_textures["forrest_texture"] = t;
     if(!t.loadFromFile("bakery_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
-    girls_textures["bakery_texture"] = t;
+    background_textures["bakery_texture"] = t;
     if(!t.loadFromFile("library_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
-    girls_textures["library_texture"] = t;
+    background_textures["library_texture"] = t;
     if(!t.loadFromFile("main_menu_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
-    girls_textures["main_menu_texture"] = t;
+    background_textures["main_menu_texture"] = t;
     sf::Sprite s;
     s.setTexture(background_textures["forrest_texture"]);
     background_sprites["forrest_spr"] = s;
@@ -58,11 +58,15 @@ gui::gui(sf::RenderWindow* window) {
     // my_gui->button_functions[my_gui->buttons->name]();
 
     // button groups
-    // ...
+    main_menu_buttons["play"] = &buttons["main_menu_play"];
+    main_menu_buttons["play"]->getSprite().setPosition(200,100);
+    main_menu_buttons["options"] = &buttons["main_menu_options"];
+    main_menu_buttons["options"]->getSprite().setPosition(200,350);
 
     // set current-strings
     current_background = "main_menu_spr";
     current_girl = "none";
+    current_state = "menu";
 
     //initialize text_positions
     // onDATE (includes 10px matting)
@@ -116,6 +120,7 @@ sf::Sprite gui::getBkg(std::string name){
 
 sf::Sprite gui::getButton(std::string name){
     // UNDER CONSTRUCTION
+    return sf::Sprite();
 }
 
 void gui::drawText(std::string text, std::vector<int> location){
@@ -137,3 +142,5 @@ void gui::button_function_main_menu_play(){
 void gui::button_function_main_menu_options(){
 
 }
+
+
