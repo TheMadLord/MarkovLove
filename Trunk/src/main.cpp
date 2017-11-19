@@ -17,15 +17,10 @@
 using namespace std;
 
 int main () {
-
-
-
 	float deltaTime;
 	sf::Clock clock;
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
     gui* my_gui = new gui(window);
-
-    parseFile("Date1.txt");
     // START OF GAME LOOP
     while (window->isOpen()) {
         // INPUTS
@@ -108,7 +103,6 @@ int main () {
             std::cout << "CURRENT STATE NOT VALID" << std::endl;
             break;
         }
-
         my_gui->my_window->display();
     }
 	delete my_gui;
