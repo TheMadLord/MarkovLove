@@ -83,7 +83,8 @@ int main () {
         // RENDER
         my_gui->my_window->clear(sf::Color::Black);
 
-        // ALL DRAW CODE GOES HERE.
+        // ALL DRAW CODE GOES BETWEEN HERE ---
+
         my_gui->my_window->draw(my_gui->getBkg(my_gui->current_background));
         if (my_gui->current_state == "menu"){
             for (std::map<std::string, button*>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
@@ -103,6 +104,12 @@ int main () {
             std::cout << "CURRENT STATE NOT VALID" << std::endl;
             break;
         }
+<<<<<<< HEAD
+=======
+
+        // --- AND HERE.
+
+>>>>>>> c4e157ce2bc235f6518ce3e2830b3c738cfddb38
         my_gui->my_window->display();
     }
 	delete my_gui;
