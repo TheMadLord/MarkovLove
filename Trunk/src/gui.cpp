@@ -11,7 +11,7 @@ gui::gui(sf::RenderWindow* window) {
     if (!my_font.loadFromFile("calibri.ttf")) { std::cout << "ERROR WITH LOADING FONT" << std::endl; }
 
     // initialize maps
-    //girls
+    //girls - test
     sf::Texture girl_1_u;
     if (!girl_1_u.loadFromFile("girl_1_u.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
     sf::Texture girl_1_h;
@@ -28,6 +28,29 @@ gui::gui(sf::RenderWindow* window) {
     girls_sprites["girl_1_happy"] = sprite;
     sprite.setTexture(girls_textures["girl_1_s"]);
     girls_sprites["girl_1_sad"] = sprite;
+
+    //Virgo
+    //Virgo_Enamored.png
+    sf::Texture V_E;
+    if (!V_E.loadFromFile("Virgo_Enamored.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    sf::Sprite V_E_s;
+    V_E_s.setTexture(V_E);
+    Virgo_sprites["Virgo_Enamored"] = V_E_s;
+    sf::Texture V_A;
+    if (!V_A.loadFromFile("Virgo_Angry.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    sf::Sprite V_A_s;
+    V_A_s.setTexture(V_A);
+    Virgo_sprites["Virgo_Angry"] = V_A_s;
+    sf::Texture V_S;
+    if (!V_S.loadFromFile("Virgo_Sad.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    sf::Sprite V_S_s;
+    V_S_s.setTexture(V_S);
+    Virgo_sprites["Virgo_Sad"] = V_S_s;
+    sf::Texture V_H;
+    if (!V_H.loadFromFile("Virgo_Enamored.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    sf::Sprite V_H_s;
+    V_H_s.setTexture(V_H);
+    Virgo_sprites["Virgo_Happy"] = V_H_s;
 
     // bkgs
     sf::Texture t;
