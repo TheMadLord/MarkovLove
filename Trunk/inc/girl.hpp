@@ -4,7 +4,7 @@
 
 
 #define GIRL_MOOD_ANGRY 0
-#define GIRL_MOOD_NEUTRAL 1
+#define GIRL_MOOD_SAD 1
 #define GIRL_MOOD_HAPPY 2
 #define GIRL_MOOD_LOVE 3
 

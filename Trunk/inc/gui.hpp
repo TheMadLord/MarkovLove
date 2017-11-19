@@ -24,7 +24,7 @@ public:
     gui(sf::RenderWindow* window);
     ~gui();
     void update(float deltaTime);
-    sf::Sprite getGirl(std::string name);
+    //sf::Sprite getGirl(std::string name);
     sf::Sprite getBkg(std::string name);
     sf::Sprite getButton(std::string name);
     void drawText(std::string text, std::vector<int> location);
@@ -34,14 +34,14 @@ public:
     static void button_function_main_menu_play();
     static void button_function_main_menu_options();
 
+    std::map<std::string,sf::Sprite> Virgo_sprites;
+    std::map<std::string,sf::Texture> Virgo_textures;
+
 private:
     sf::Font my_font;
     static void my_static_function(gui* g);
     std::map<std::string,std::vector<int>> text_positions;
     std::map<std::string,sf::Texture> background_textures;
     std::map<std::string,sf::Sprite> background_sprites;
-    std::map<std::string,sf::Texture> girls_textures;
-    std::map<std::string,sf::Sprite> girls_sprites;
-    std::map<std::string,sf::Sprite> Virgo_sprites;
     std::map<std::string,button> buttons;
 };
