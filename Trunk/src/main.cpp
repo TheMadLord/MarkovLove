@@ -18,15 +18,20 @@ using namespace std;
 
 int main () {
     bool click = false;
+    bool beginning_of_date = true;
+    int choice;
 	float deltaTime;
 	sf::Clock clock;
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
     gui* my_gui = new gui(window);
-    // START OF GAME LOOP
+
+    Conversation* c = parseFile("Date1.txt");
+    ConversationHandler ch (c);
 
     std::cout << std::to_string(my_gui->overworld_buttons["overworld_forrest"]->getRect().height) << std::endl;
     std::cout << std::to_string(my_gui->overworld_buttons["overworld_forrest"]->getRect().width) << std::endl;
 
+    // START OF GAME LOOP
     while (window->isOpen()) {
         // INPUTS
         // check all the window's events that were triggered since the last iteration of the loop
@@ -82,9 +87,9 @@ int main () {
                     for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
                         if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
                             if (iter->second->getName() == "dialog_option_1"){
-                                // call function that tells Ryan the player picked option zero
+                                choice = 0;
                             } else if (iter->second->getName() == "dialog_option_2"){
-                                // call function that tells Ryan the player picked option one
+                                choice = 1;
                             } else if (iter->second->getName() == "give_gift"){
                                 //open inventory
                                 // ha like we're going to get that done
@@ -122,6 +127,17 @@ int main () {
                 my_gui->my_window->draw(iter->second->getSprite());
             }
             // DRAW DATE TEXT
+            vector<string> blooooooop;
+            if (beginning_of_date) {
+                blooooooop = ch.getStartText();
+                beginning_of_date = false;
+            } else {
+                blooooooop = ch.getText(choice);
+            }
+            for(int i = 0; i < 3; i++){
+                my_gui->drawText(blooooooop[i], my_gui->text_positions[i]);
+            }
+
         } else if (my_gui->current_state == "overworld"){
             for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
                 my_gui->my_window->draw(iter->second->getSprite());

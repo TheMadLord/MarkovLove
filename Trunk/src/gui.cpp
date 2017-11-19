@@ -101,9 +101,9 @@ gui::gui(sf::RenderWindow* window) {
 
     //initialize text_positions
     // onDATE (includes 10px matting)
-    text_positions["option1"] = {30,430};
-    text_positions["option2"] = {30,520};
-    text_positions["girls_response"] = {70,200};
+    text_positions.push_back(std::vector<int>(70,200));
+    text_positions.push_back(std::vector<int>(30,430));
+    text_positions.push_back(std::vector<int>(30,520));
 
     //button_functions["button_1"] = my_static_function;
 }

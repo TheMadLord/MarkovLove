@@ -37,10 +37,11 @@ public:
     std::map<std::string,sf::Sprite> Virgo_sprites;
     std::map<std::string,sf::Texture> Virgo_textures;
 
+    std::vector<std::vector<int>> text_positions;
+
 private:
     sf::Font my_font;
     static void my_static_function(gui* g);
-    std::map<std::string,std::vector<int>> text_positions;
     std::map<std::string,sf::Texture> background_textures;
     std::map<std::string,sf::Sprite> background_sprites;
     std::map<std::string,button> buttons;
