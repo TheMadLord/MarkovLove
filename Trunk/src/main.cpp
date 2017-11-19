@@ -36,13 +36,13 @@ int main () {
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
             // collision w/ buttons
-            // CHANGE 'CAUSE BUTTONS ARE STORED DIFFERENTLY AS OF RN
             if (my_gui->current_state == "menu"){
                 for (std::map<std::string, button*>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
                     if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
                         if (iter->second->getName() == "main_menu_play"){
-                            my_gui->current_state = "overworld";
-                            my_gui->current_background = "forrest_spr";
+                            my_gui->current_state = "date"; // CHANGE
+                            my_gui->current_girl = "Virgo";
+                            my_gui->current_background = "forrest_spr"; // CHANGE
                         } else if (iter->second->getName() == "main_menu_options") {
                             //my_gui->current_state =
                             std::cout << "\noptions" << std::endl;
@@ -51,6 +51,32 @@ int main () {
                         //my_gui->button_functions[iter->second->getName()]();
                     }
                 }
+            } else if (my_gui->current_state == "overworld"){
+                for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
+                    if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
+                        // stuff
+                    }
+                }
+            } else if (my_gui->current_state == "date"){
+                for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
+                    if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
+                        if (iter->second->getName() == "dialog_option_1"){
+                            //
+                        } else if (iter->second->getName() == "dialog_option_2"){
+                            //
+                        } else if (iter->second->getName() == "give_gift"){
+                            //open inventory
+                            // ha like we're going to get that done
+                        } else if (iter->second->getName() == "run_away"){
+                            my_gui->current_state = "overworld";
+                            my_gui->current_background = "map";
+                        } else {
+                            std::cout << "not a button" << std::endl;
+                        }
+                    }
+                }
+            } else {
+                std::cout << "NOT A VALID STATE - mousepressed" << std::endl;
             }
         }
 
