@@ -19,12 +19,12 @@ using namespace std;
 int main () {
     bool click = false;
     bool beginning_of_date = true;
-    int choice;
+    int choice = -1;
 	float deltaTime;
 	sf::Clock clock;
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
     gui* my_gui = new gui(window);
-
+    Girl virgo ("Virgo");
     vector<string> blooooooop;
 
     Conversation* c = parseFile("Date1.txt");
@@ -41,6 +41,14 @@ int main () {
         while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
                 window->close();
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::U)) {
+                virgo.modifyMood(1);
+            }
+
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::I)) {
+                virgo.modifyMood(-1);
             }
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
@@ -86,7 +94,7 @@ int main () {
                         }
                     }
                 } else if (my_gui->current_state == "date") {
-                    for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
+                    for (std::map<std::string, button*>::iterator iter = my_gui->date_buttons.begin(); iter != my_gui->date_buttons.end(); iter++) {
                         if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
                             if (iter->second->getName() == "dialog_option_1"){
                                 choice = 0;
@@ -99,6 +107,7 @@ int main () {
                                 my_gui->current_state = "overworld";
                                 my_gui->current_background = "map_bkg";
                                 my_gui->current_girl = "none";
+                                beginning_of_date = true;
                             } else {
                                 std::cout << "not a button" << std::endl;
                             }
@@ -123,13 +132,14 @@ int main () {
         my_gui->my_window->draw(my_gui->getBkg(my_gui->current_background));
 
         if (my_gui->current_girl != "none"){
-            if (GIRL_MOOD_ANGRY) {
+            if (virgo.getMood() == GIRL_MOOD_ANGRY) {
                 my_gui->my_window->draw(my_gui->Virgo_sprites["Virgo_Angry"]);
-            } else if (GIRL_MOOD_HAPPY) {
+            } else if (virgo.getMood() == GIRL_MOOD_HAPPY) {
                 my_gui->my_window->draw(my_gui->Virgo_sprites["Virgo_Happy"]);
-            } else if (GIRL_MOOD_LOVE) {
-                my_gui->my_window->draw(my_gui->Virgo_sprites["Virgo_Love"]);
-            } else if (GIRL_MOOD_SAD) {
+            } else if (virgo.getMood() == GIRL_MOOD_LOVE) {
+                //std::cout << ""
+                my_gui->my_window->draw(my_gui->Virgo_sprites["Virgo_Enamored"]);
+            } else if (virgo.getMood() == GIRL_MOOD_SAD) {
                 my_gui->my_window->draw(my_gui->Virgo_sprites["Virgo_Sad"]);
             } else {
                 std::cout << "The Girl Maybe Isn't Instantiated ... ?" << std::endl;
@@ -155,7 +165,10 @@ int main () {
                 std::cout << "endif" << std::endl;
             } else {
                 std::cout << "else -- SHOULD NOT BE HERE unless button is pushed" << std::endl;
-                blooooooop = ch.getText(choice);
+                if(choice > -1){
+                    blooooooop = ch.getText(choice);
+                    choice = -1;
+                }
             }
             std::cout << "before drawText" << std::endl;
             for(int i = 0; i < 3; i++){

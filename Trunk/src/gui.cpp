@@ -104,8 +104,11 @@ gui::gui(sf::RenderWindow* window) {
     date_buttons["give_gift"] = &buttons["give_gift"];
     date_buttons["dialog_option_1"]->getSprite().setPosition(20,420);
     date_buttons["dialog_option_2"]->getSprite().setPosition(20,510);
-    date_buttons["back_to_menu"]->getSprite().setPosition(240,420);
-    date_buttons["give_gift"]->getSprite().setPosition(110,420);
+
+    date_buttons["dialog_option_1"]->getSprite().setColor(sf::Color(255,255,255, 128));
+    date_buttons["dialog_option_2"]->getSprite().setColor(sf::Color(255,255,255, 128));
+    date_buttons["back_to_menu"]->getSprite().setPosition(640,420);
+    date_buttons["give_gift"]->getSprite().setPosition(480,420);
 
     // set current-strings
     current_background = "main_menu_bkg";
@@ -114,9 +117,9 @@ gui::gui(sf::RenderWindow* window) {
 
     //initialize text_positions
     // onDATE (includes 10px matting)
-    text_positions.push_back(std::vector<int>(70,200));
-    text_positions.push_back(std::vector<int>(30,430));
-    text_positions.push_back(std::vector<int>(30,520));
+    text_positions.push_back({20, 200});
+    text_positions.push_back({20,430});
+    text_positions.push_back({20,520});
 
     //button_functions["button_1"] = my_static_function;
 }
@@ -156,19 +159,25 @@ sf::Sprite gui::getButton(std::string name){
 }
 
 void gui::drawText(std::string text, std::vector<int> location){
-    sf::Text my_text_object;
-    my_text_object.setFont(my_font);
-    std::cout << "font set" << std::endl;
-
-    my_text_object.setString(text);
-    std::cout << "string set" << std::endl;
-    my_text_object.setCharacterSize(24); // in pixels, not points!
-    std::cout << "char size set" << std::endl;
-    my_text_object.setFillColor(sf::Color::Black);
-    std::cout << "fill color set" << std::endl;
-    //text.setStyle(sf::Text::Bold | sf::Text::Underlined); THIS MAKES TEXT BOLD AND UNDERLINED
-    my_window->draw(my_text_object);
-    std::cout << "function complete" << std::endl;
+//possibly make text "layer"
+//if (text.length() > 30) {
+    //for (int i = 0; i< text.length(); i+= 30){
+        //std::string t = text.substr(i,30);
+        sf::Text my_text_object;
+        my_text_object.setFont(my_font);
+        my_text_object.setString(text);
+        my_text_object.setCharacterSize(24);
+        // in pixels, not points!
+        my_text_object.setFillColor(sf::Color::Black);
+        my_text_object.setPosition(location[0],location[1]);
+        my_window->draw(my_text_object);
+    //}
+//}
+    sf::Sprite wb;
+    wb.setTexture(sf::Texture());
+    wb.setColor(sf::Color(255, 255, 255, 208));
+    wb.setPosition(location[0]-10,location[1]-10);
+    wb.scale(10,10);
 }
 
 void gui::button_function_main_menu_play(){

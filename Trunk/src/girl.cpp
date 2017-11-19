@@ -2,6 +2,7 @@
 
 Girl::Girl(std::string  name){
     this->name = name;
+    this->mood = GIRL_MOOD_LOVE;
 }
 
 std::string Girl::getName(){

@@ -7,6 +7,16 @@
 #include <vector>
 #include "parser.hpp"
 
+std::string stripLineEnd(std::string line){
+    std::string ret = line;
+    int i = line.length()-1;
+    while(line[i] == '\r' ||line[i] == '\t' ||line[i] == '\n' || line[i] == ' '){
+        ret = ret.substr(0,i);
+        i--;
+    }
+    return ret;
+}
+
 ConversationNode* parseELine(std::string line, std::map<std::string, std::string>* vars){
     ConversationNode* ret = new ConversationNode();
     //get starting points for each field
@@ -127,6 +137,7 @@ Conversation* parseFile(std::string FileName){
  	if (myfile.is_open()){
    		while ( getline (myfile,line) ){
             line = fillVars(line,&vars);
+            line = stripLineEnd(line);
             switch(line[0]){
                 case ('Y'):
                     cur = parseYLine(line, &vars);
@@ -149,6 +160,7 @@ Conversation* parseFile(std::string FileName){
   	}else{
 		 std::cout << "Unable to open file";
 	}
+
 	return ret;
 }
 
@@ -156,6 +168,30 @@ ConversationNode::ConversationNode(){
 
 }
 Conversation::Conversation(){
+    ConversationNode* END = new ConversationNode();
+    END->name = "END";
+    END->mod =  0;
+    END->text = "END";
+    END->branchs = {"END","END"};
+    END->Probalities = {50.0f,50.0f};
+
+    ConversationNode* START = new ConversationNode();
+    START->name = "START_OVER";
+    START->mod =  0;
+    START->text = "<START OVER>";
+    START->branchs = {"START_OVER","START_OVER"};
+    START->Probalities = {50.0f,50.0f};
+
+    ConversationNode* WIN = new ConversationNode();
+    WIN->name = "WIN";
+    WIN->mod =  0;
+    WIN->text = "WIN";
+    WIN->branchs = {"WIN","WIN"};
+    WIN->Probalities = {50.0f,50.0f};
+
+    nodes.emplace("END",END);
+    nodes.emplace("START_OVER",START);
+    nodes.emplace("WIN",WIN);
 }
 
 
@@ -163,34 +199,30 @@ ConversationHandler::ConversationHandler(Conversation* con){
     this->convo = con;
 }
 
-std::vector<std::string>ConversationHandler::getStartText(){
+std::vector<std::string> ConversationHandler::getStartText(){
     std::vector<std::string> ret;
-    std::cout << "1" << std::endl;
     ret.push_back("");
-    std::cout << "2" << std::endl;
     srand(time(NULL));
-    std::cout << "2.5" << std::endl;
-    int i = rand() % convo->entrypoints.size(); // THIS IS WHERE IT'S CRASHING.
-    //int i = 1;
-    std::cout << "3" << std::endl;
+    int i = rand() % convo->entrypoints.size();
     int j;
     do {
-        std::cout << "4" << std::endl;
         j = rand() % convo->entrypoints.size(); // UPON "FIXING" i, REACHES HERE ONCE THEN CRASHES
     } while(j == i);
-    std::cout << "5" << std::endl;
     ret.push_back((top = convo->entrypoints.at(i))->text);
-    std::cout << "6" << std::endl;
     ret.push_back((buttom = convo->entrypoints.at(j))->text);
-    std::cout << "7" << std::endl;
     return ret;
 }
 
-std::vector<std::string>ConversationHandler::getText(int i){
+std::vector<std::string> ConversationHandler::getText(int i){
     ConversationNode* root = (i == 0)? top:buttom;
+    std::vector<std::string> ret;
+    if(convo->getNode(root->branchs[0])->name== "START_OVER"){
+            ret = getStartText();
+            return ret;
+    }
     float r = (rand() % 100)/100.0f;
     float t = 0;
-    std::vector<std::string> ret;
+    std::cout <<  "GOT NEW  LINES=)\n";
     for(int ii = 0; ii < root->Probalities.size(); ++t){
         if(r < t+root->Probalities.at(ii)){
             root = this->convo->getNode(root->branchs.at(ii));
@@ -201,14 +233,40 @@ std::vector<std::string>ConversationHandler::getText(int i){
     }
     ret.push_back(root->text);
     i = rand() % root->branchs.size();
-    int j;
-    do{
-        j = rand() % root->branchs.size();;
-    }while(j == i);
-    ret.push_back((top = this->convo->getNode(root->branchs.at(i)))->text);
-    ret.push_back((buttom = this->convo->getNode(root->branchs.at(j)))->text);
+    printf("%d\n", root->branchs.size());
+    std::string ts = root->branchs.at(i);
+    std::cout << "Line 1:<" + ts +">\n\n";
+
+    ret.push_back((top = convo->getNode(ts))->text);
+
+
+
+    if(root->branchs.size() == 1){
+        ret.push_back("");
+        if(top->name == "START_OVER"){
+            ret = getStartText();
+            ret[0] = root->text;
+            return ret;
+        }
+    }else{
+        int j;
+        do{
+            j = rand() % root->branchs.size();
+        }while(j == i);
+        ts = root->branchs.at(j);
+        std::cout << "Line 2: " + ts +"\n\n";
+        ret.push_back((buttom = this->convo->getNode(ts))->text);
+    }
     return ret;
 }
 ConversationNode* Conversation::getNode(std::string name){
-    return this->nodes.at(name);
+
+    for(std::map<std::string,ConversationNode*>::iterator it = nodes.begin(); it != nodes.end(); ++it){
+       // std::cout << it->first + " : " + it->second->text + "\n";
+    }
+        ConversationNode*  ret = this->nodes.at(name);
+        return ret;
+
 }
+
+
