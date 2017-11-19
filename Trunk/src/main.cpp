@@ -154,7 +154,7 @@ int main () {
                 beginning_of_date = false;
                 std::cout << "endif" << std::endl;
             } else {
-                std::cout << "else -- SHOULD NOT BE HERE" << std::endl;
+                std::cout << "else -- SHOULD NOT BE HERE unless button is pushed" << std::endl;
                 blooooooop = ch.getText(choice);
             }
             std::cout << "before drawText" << std::endl;
