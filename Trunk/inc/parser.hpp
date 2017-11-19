@@ -34,7 +34,7 @@ public:
     ConversationHandler(Conversation* con);
     std::vector<std::string> getText(int i);
     std::vector<std::string> getStartText();
-    float[][] getTransMatrix();
+    float getTransMatrix();
 };
 
 Conversation* parseFile(std::string FileName);
