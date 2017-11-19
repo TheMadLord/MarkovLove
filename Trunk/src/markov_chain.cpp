@@ -18,8 +18,8 @@ node();
 ~node() {}
 
 node* markov_chain::getNode(int value){
-    for (){
-        //
+    for (int i = 0; i< nodes.size(); i++){
+        if //nodes[i]
     }
 }
 
