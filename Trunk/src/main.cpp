@@ -25,11 +25,13 @@ int main () {
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
     gui* my_gui = new gui(window);
 
+    vector<string> blooooooop;
+
     Conversation* c = parseFile("Date1.txt");
     ConversationHandler ch (c);
 
-    std::cout << std::to_string(my_gui->overworld_buttons["overworld_forrest"]->getRect().height) << std::endl;
-    std::cout << std::to_string(my_gui->overworld_buttons["overworld_forrest"]->getRect().width) << std::endl;
+    //std::cout << std::to_string(my_gui->overworld_buttons["overworld_forrest"]->getRect().height) << std::endl;
+    //std::cout << std::to_string(my_gui->overworld_buttons["overworld_forrest"]->getRect().width) << std::endl;
 
     // START OF GAME LOOP
     while (window->isOpen()) {
@@ -118,34 +120,6 @@ int main () {
         // ALL DRAW CODE GOES BETWEEN HERE ---
 
         my_gui->my_window->draw(my_gui->getBkg(my_gui->current_background));
-        if (my_gui->current_state == "menu"){
-            for (std::map<std::string, button*>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
-                my_gui->my_window->draw(iter->second->getSprite());
-            }
-        } else if (my_gui->current_state == "date"){
-            for (std::map<std::string, button*>::iterator iter = my_gui->on_date_buttons.begin(); iter != my_gui->on_date_buttons.end(); iter++) {
-                my_gui->my_window->draw(iter->second->getSprite());
-            }
-            // DRAW DATE TEXT
-            vector<string> blooooooop;
-            if (beginning_of_date) {
-                blooooooop = ch.getStartText();
-                beginning_of_date = false;
-            } else {
-                blooooooop = ch.getText(choice);
-            }
-            for(int i = 0; i < 3; i++){
-                my_gui->drawText(blooooooop[i], my_gui->text_positions[i]);
-            }
-
-        } else if (my_gui->current_state == "overworld"){
-            for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
-                my_gui->my_window->draw(iter->second->getSprite());
-            }
-        } else {
-            std::cout << "CURRENT STATE NOT VALID" << std::endl;
-            my_gui->my_window->close();
-        }
 
         if (my_gui->current_girl != "none"){
             if (GIRL_MOOD_ANGRY) {
@@ -159,6 +133,42 @@ int main () {
             } else {
                 std::cout << "The Girl Maybe Isn't Instantiated ... ?" << std::endl;
             }
+        }
+
+        if (my_gui->current_state == "menu"){
+            for (std::map<std::string, button*>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
+                my_gui->my_window->draw(iter->second->getSprite());
+            }
+        } else if (my_gui->current_state == "date"){
+            for (std::map<std::string, button*>::iterator iter = my_gui->on_date_buttons.begin(); iter != my_gui->on_date_buttons.end(); iter++) {
+                my_gui->my_window->draw(iter->second->getSprite());
+            }
+
+            std::cout << "before draw date text" << std::endl;
+            // DRAW DATE TEXT
+            if (beginning_of_date) {
+                std::cout << "if" << std::endl;
+                blooooooop = ch.getStartText();
+                std::cout << "???" << std::endl;
+                beginning_of_date = false;
+                std::cout << "endif" << std::endl;
+            } else {
+                std::cout << "else -- SHOULD NOT BE HERE" << std::endl;
+                blooooooop = ch.getText(choice);
+            }
+            std::cout << "before drawText" << std::endl;
+            for(int i = 0; i < 3; i++){
+                my_gui->drawText(blooooooop[i], my_gui->text_positions[i]);
+                std::cout << "got through drawText function" << std::endl;
+            }
+
+        } else if (my_gui->current_state == "overworld"){
+            for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
+                my_gui->my_window->draw(iter->second->getSprite());
+            }
+        } else {
+            std::cout << "CURRENT STATE NOT VALID" << std::endl;
+            my_gui->my_window->close();
         }
 
         // --- AND HERE.

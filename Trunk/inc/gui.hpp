@@ -24,7 +24,6 @@ public:
     gui(sf::RenderWindow* window);
     ~gui();
     void update(float deltaTime);
-    //sf::Sprite getGirl(std::string name);
     sf::Sprite getBkg(std::string name);
     sf::Sprite getButton(std::string name);
     void drawText(std::string text, std::vector<int> location);

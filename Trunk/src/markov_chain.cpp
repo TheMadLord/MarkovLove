@@ -18,14 +18,18 @@ node();
 ~node() {}
 
 node* markov_chain::getNode(int value){
+    for (){
+        //
+    }
 }
 
 node* markov_chain::getNode(std::string name){
-
+    //
 }
 
-std::vector<node> node::getReachableNodes(node){
-
+std::vector<node> node::getReachableNodes(node n){
+    std::vector<node> ans;
+    // append stuff then return
 }
 
 std::vector<node> markov_chain::getNodes() { return &nodes; }

@@ -164,14 +164,21 @@ ConversationHandler::ConversationHandler(Conversation* con){
 
 std::vector<std::string>ConversationHandler::getStartText(){
     std::vector<std::string> ret;
+    std::cout << "1" << std::endl;
     ret.push_back("");
-    int i = rand() % convo->entrypoints.size();
+    std::cout << "2" << std::endl;
+    int i = rand() % convo->entrypoints.size(); // THIS IS WHERE IT'S CRASHING.
+    std::cout << "3" << std::endl;
     int j;
     do{
+    std::cout << "4" << std::endl;
         j = rand() % convo->entrypoints.size();
     }while(j == i);
+    std::cout << "5" << std::endl;
     ret.push_back((top = convo->entrypoints.at(i))->text);
+    std::cout << "6" << std::endl;
     ret.push_back((buttom = convo->entrypoints.at(j))->text);
+    std::cout << "7" << std::endl;
     return ret;
 }
 

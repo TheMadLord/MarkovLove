@@ -126,20 +126,6 @@ void gui::update(float deltaTime) { // 2 - identifier, text to draw ?
 
 }
 
-/*
-sf::Sprite gui::getGirl(std::string name){
-    // find girl by string key
-    if (name == "none") { return sf::Sprite(); }
-    std::map<std::string, sf::Sprite>::iterator iter = girls_sprites.find(name);
-    if (iter == girls_sprites.end()){
-        //std::cout << "girl sprite \""+name+"\" not found" << std::endl;
-        return sf::Sprite();
-    } else {
-        return iter->second;
-    }
-}
-*/
-
 sf::Sprite gui::getBkg(std::string name){
     // find girl by string key
     std::map<std::string, sf::Sprite>::iterator iter = background_sprites.find(name);
@@ -157,15 +143,19 @@ sf::Sprite gui::getButton(std::string name){
 }
 
 void gui::drawText(std::string text, std::vector<int> location){
-    // THIS FUNCTION NEEDS TO BE CALLED IN GUI UPDATE
     sf::Text my_text_object;
     my_text_object.setFont(my_font);
+    std::cout << "font set" << std::endl;
 
     my_text_object.setString(text);
+    std::cout << "string set" << std::endl;
     my_text_object.setCharacterSize(24); // in pixels, not points!
+    std::cout << "char size set" << std::endl;
     my_text_object.setFillColor(sf::Color::Black);
+    std::cout << "fill color set" << std::endl;
     //text.setStyle(sf::Text::Bold | sf::Text::Underlined); THIS MAKES TEXT BOLD AND UNDERLINED
     my_window->draw(my_text_object);
+    std::cout << "function complete" << std::endl;
 }
 
 void gui::button_function_main_menu_play(){
