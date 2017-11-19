@@ -17,9 +17,7 @@
 using namespace std;
 
 int main () {
-
-
-
+    bool click = false;
 	float deltaTime;
 	sf::Clock clock;
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
@@ -37,49 +35,69 @@ int main () {
             }
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)){
-            // collision w/ buttons
-            if (my_gui->current_state == "menu"){
-                for (std::map<std::string, button*>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
-                    if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
-                        if (iter->second->getName() == "main_menu_play"){
-                            my_gui->current_state = "date"; // CHANGE
-                            my_gui->current_girl = "Virgo";
-                            my_gui->current_background = "forrest_spr"; // CHANGE
-                        } else if (iter->second->getName() == "main_menu_options") {
-                            //my_gui->current_state =
-                            std::cout << "\noptions" << std::endl;
-                            window->close();
-                        }
-                        //my_gui->button_functions[iter->second->getName()]();
-                    }
-                }
-            } else if (my_gui->current_state == "overworld"){
-                for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
-                    if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
-                        // stuff
-                    }
-                }
-            } else if (my_gui->current_state == "date"){
-                for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
-                    if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
-                        if (iter->second->getName() == "dialog_option_1"){
-                            //
-                        } else if (iter->second->getName() == "dialog_option_2"){
-                            //
-                        } else if (iter->second->getName() == "give_gift"){
-                            //open inventory
-                            // ha like we're going to get that done
-                        } else if (iter->second->getName() == "run_away"){
-                            my_gui->current_state = "overworld";
-                            my_gui->current_background = "map";
-                        } else {
-                            std::cout << "not a button" << std::endl;
+            if (click == false) {
+                click = true;
+                // collision w/ buttons
+                if (my_gui->current_state == "menu"){
+                    for (std::map<std::string, button*>::iterator iter = my_gui->main_menu_buttons.begin(); iter != my_gui->main_menu_buttons.end(); iter++) {
+                        if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
+                            if (iter->second->getName() == "main_menu_play"){
+                                my_gui->current_state = "overworld";
+                                my_gui->current_background = "map_bkg";
+                                my_gui->current_girl = "Virgo";
+                            } else if (iter->second->getName() == "main_menu_options") {
+                                //my_gui->current_state =
+                                std::cout << "\noptions" << std::endl;
+                                window->close();
+                            }
                         }
                     }
+                } else if (my_gui->current_state == "overworld"){
+                    for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
+                        if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
+                            if (iter->second->getName() == "overworld_forrest"){
+                                my_gui->current_background = "forrest_bkg";
+                                my_gui->current_state = "date";
+                                my_gui->current_girl = "Virgo";
+                            } else if (iter->second->getName() == "overworld_menu") {
+                                my_gui->current_background = "main_menu_bkg";
+                                my_gui->current_state = "menu";
+                                my_gui->current_girl = "none";
+                            } else if (iter->second->getName() == "overworld_library") {
+                                my_gui->current_background = "library_bkg";
+                                my_gui->current_state = "date";
+                                my_gui->current_girl = "Virgo";
+                            } else if (iter->second->getName() == "overworld_bakery") {
+                                my_gui->current_background = "bakery_bkg";
+                                my_gui->current_state = "date";
+                                my_gui->current_girl = "Virgo";
+                            }
+                        }
+                    }
+                } else if (my_gui->current_state == "date") {
+                    for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
+                        if (iter->second->getRect().contains(sf::Vector2<int>(sf::Mouse::getPosition(*(my_gui->my_window))))) {
+                            if (iter->second->getName() == "dialog_option_1"){
+                                // call function that tells Ryan the player picked option zero
+                            } else if (iter->second->getName() == "dialog_option_2"){
+                                // call function that tells Ryan the player picked option one
+                            } else if (iter->second->getName() == "give_gift"){
+                                //open inventory
+                                // ha like we're going to get that done
+                            } else if (iter->second->getName() == "run_away"){
+                                my_gui->current_state = "overworld";
+                                my_gui->current_background = "map_bkg";
+                            } else {
+                                std::cout << "not a button" << std::endl;
+                            }
+                        }
+                    }
+                } else {
+                    std::cout << "NOT A VALID STATE - mousepressed" << std::endl;
                 }
-            } else {
-                std::cout << "NOT A VALID STATE - mousepressed" << std::endl;
             }
+        } else {
+            click = false;
         }
 
         // UPDATE
@@ -100,6 +118,7 @@ int main () {
                 my_gui->my_window->draw(iter->second->getSprite());
             }
             my_gui->my_window->draw(my_gui->getGirl(my_gui->current_girl));
+            // DRAW DATE TEXT
         } else if (my_gui->current_state == "overworld"){
             for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
                 my_gui->my_window->draw(iter->second->getSprite());
@@ -107,7 +126,7 @@ int main () {
             my_gui->my_window->draw(my_gui->getGirl(my_gui->current_girl));
         } else {
             std::cout << "CURRENT STATE NOT VALID" << std::endl;
-            break;
+            my_gui->my_window->close();
         }
 
         // --- AND HERE.

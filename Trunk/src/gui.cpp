@@ -62,24 +62,27 @@ gui::gui(sf::RenderWindow* window) {
     background_textures["library_texture"] = t;
     if(!t.loadFromFile("main_menu_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
     background_textures["main_menu_texture"] = t;
+    if(!t.loadFromFile("map_bkg.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    background_textures["map_texture"] = t;
     sf::Sprite s;
     s.setTexture(background_textures["forrest_texture"]);
-    background_sprites["forrest_spr"] = s;
+    background_sprites["forrest_bkg"] = s;
     s.setTexture(background_textures["bakery_texture"]);
-    background_sprites["bakery_spr"] = s;
+    background_sprites["bakery_bkg"] = s;
     s.setTexture(background_textures["library_texture"]);
-    background_sprites["library_spr"] = s;
+    background_sprites["library_bkg"] = s;
     s.setTexture(background_textures["main_menu_texture"]);
-    background_sprites["main_menu_spr"] = s;
+    background_sprites["main_menu_bkg"] = s;
+    s.setTexture(background_textures["map_texture"]);
+    background_sprites["map_bkg"] = s;
 
     // buttons
     buttons["main_menu_play"] = button("main_menu_play");
     buttons["main_menu_options"] = button("main_menu_options");
-    button_functions["main_menu_play"] = button_function_main_menu_play;
-    button_functions["main_menu_options"] = button_function_main_menu_options;
-
-    // implementation:
-    // my_gui->button_functions[my_gui->buttons->name]();
+    buttons["overworld_forrest"] = button("overworld_forrest");
+    buttons["overworld_menu"] = button("overworld_forrest");
+    buttons["overworld_library"] = button("overworld_forrest");
+    buttons["overworld_bakery"] = button("overworld_forrest");
 
     // button groups
     main_menu_buttons["play"] = &buttons["main_menu_play"];
@@ -87,8 +90,21 @@ gui::gui(sf::RenderWindow* window) {
     main_menu_buttons["options"] = &buttons["main_menu_options"];
     main_menu_buttons["options"]->getSprite().setPosition(200,350);
 
+    overworld_buttons["overworld_forrest"] = &buttons["overworld_forrest"];
+    overworld_buttons["overworld_menu"] = &buttons["overworld_menu"];
+    overworld_buttons["overworld_library"] = &buttons["overworld_library"];
+    overworld_buttons["overworld_bakery"] = &buttons["overworld_bakery"];
+    overworld_buttons["overworld_forrest"]->getSprite().setPosition(0,0);
+    overworld_buttons["overworld_menu"]->getSprite().setPosition(0,300);
+    overworld_buttons["overworld_library"]->getSprite().setPosition(400,0);
+    overworld_buttons["overworld_bakery"]->getSprite().setPosition(400,300);
+    overworld_buttons["overworld_forrest"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
+    overworld_buttons["overworld_menu"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
+    overworld_buttons["overworld_library"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
+    overworld_buttons["overworld_bakery"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
+
     // set current-strings
-    current_background = "main_menu_spr";
+    current_background = "main_menu_bkg";
     current_girl = "none";
     current_state = "menu";
 
@@ -124,7 +140,7 @@ sf::Sprite gui::getGirl(std::string name){
     if (name == "none") { return sf::Sprite(); }
     std::map<std::string, sf::Sprite>::iterator iter = girls_sprites.find(name);
     if (iter == girls_sprites.end()){
-        std::cout << "girl sprite not found" << std::endl;
+        std::cout << "girl sprite \""+name+"\" not found" << std::endl;
         return sf::Sprite();
     } else {
         return iter->second;
@@ -135,7 +151,7 @@ sf::Sprite gui::getBkg(std::string name){
     // find girl by string key
     std::map<std::string, sf::Sprite>::iterator iter = background_sprites.find(name);
     if (iter == background_sprites.end()){
-        std::cout << "background image not found" << std::endl;
+        std::cout << "background image \""+name+"\" not found" << std::endl;
         return sf::Sprite();
     } else {
         return iter->second;

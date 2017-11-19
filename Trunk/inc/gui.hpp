@@ -20,6 +20,7 @@ public:
     std::map<std::string, button*> main_menu_buttons;
     std::map<std::string, button*> overworld_buttons;
     std::map<std::string,button_function> button_functions;
+    std::map<std::string, std::string> emotions;
     gui(sf::RenderWindow* window);
     ~gui();
     void update(float deltaTime);
