@@ -10,11 +10,13 @@ set(SRC ${PROJECT_SOURCE_DIR}/src)
 set(PROJECT_FILES
 	${SRC}/main.cpp
 	${SRC}/parser.cpp
-	${SRC}/parser.hpp
+	${INC}/parser.hpp
 	${SRC}/gui.cpp
 	${INC}/gui.hpp
 	${SRC}/button.cpp
 	${INC}/button.hpp
+	${SRC}/girl.cpp
+	${INC}/girl.hpp
 )
 
 add_executable(MarkovLove ${PROJECT_FILES})

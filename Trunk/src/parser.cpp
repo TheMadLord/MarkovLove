@@ -82,6 +82,13 @@ ConversationNode* parseYLine(std::string line, std::map<std::string, std::string
         probs = probs.substr(i+1);
     }
     ret->Probalities.push_back(std::stoi(probs)/100.0f);
+    if(line.find("EMOTION_DOWN") != -1){
+        ret->mod = -1;
+    }else if(line.find("EMOTION_UP") != -1) {
+        ret->mod = 1;
+    }else{
+        ret->mod = 0;
+    }
     return ret;
 }
 
@@ -119,7 +126,6 @@ Conversation* parseFile(std::string FileName){
  	if (myfile.is_open()){
    		while ( getline (myfile,line) ){
             line = fillVars(line,&vars);
-
             switch(line[0]){
                 case ('Y'):
                     cur = parseYLine(line, &vars);

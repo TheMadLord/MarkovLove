@@ -4,8 +4,10 @@
 #include <string>
 
 #include "parser.hpp"
+#include "girl.hpp"
 #include "gui.hpp"
 #include "button.hpp"
+
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
@@ -16,14 +18,14 @@ using namespace std;
 
 int main () {
 
-    parseFile("L1t.txt");
+
 
 	float deltaTime;
 	sf::Clock clock;
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
     gui* my_gui = new gui(window);
 
-
+    parseFile("Date1.txt");
     // START OF GAME LOOP
     while (window->isOpen()) {
         // INPUTS
