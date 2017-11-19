@@ -177,23 +177,27 @@ std::vector<std::string>ConversationHandler::getStartText(){
 
 std::vector<std::string>ConversationHandler::getText(int i){
     ConversationNode* root = (i == 0)? top:buttom;
-    float r = (rand() % 100)100.0f;
+    float r = (rand() % 100)/100.0f;
     float t = 0;
-    int i;
-    for(i = 0; i < root->Probalities.size(); ++t){
-        if(r < t+root->Probalities.at(i)){
+    std::vector<std::string> ret;
+    for(int ii = 0; ii < root->Probalities.size(); ++t){
+        if(r < t+root->Probalities.at(ii)){
+            root = this->convo->getNode(root->branchs.at(ii));
             break;
         }else{
-            t += root->Probalities.at(i);
+            t += root->Probalities.at(ii);
         }
     }
     ret.push_back(root->text);
-    int i = rand() % root->branchs.size();
+    i = rand() % root->branchs.size();
     int j;
     do{
         j = rand() % root->branchs.size();;
     }while(j == i);
-    ret.push_back((top = root->branchs.at(i))->text);
-    ret.push_back((buttom = root->branchs.at(j))->text);
+    ret.push_back((top = this->convo->getNode(root->branchs.at(i)))->text);
+    ret.push_back((buttom = this->convo->getNode(root->branchs.at(j)))->text);
     return ret;
+}
+ConversationNode* Conversation::getNode(std::string name){
+    return this->nodes.at(name);
 }

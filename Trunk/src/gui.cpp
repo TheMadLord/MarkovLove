@@ -96,8 +96,8 @@ gui::gui(sf::RenderWindow* window) {
     overworld_buttons["overworld_bakery"] = &buttons["overworld_bakery"];
     overworld_buttons["overworld_forrest"]->getSprite().setPosition(0,0);
     overworld_buttons["overworld_menu"]->getSprite().setPosition(0,300);
-    overworld_buttons["overworld_library"]->getSprite().setPosition(400,0);
-    overworld_buttons["overworld_bakery"]->getSprite().setPosition(400,300);
+    overworld_buttons["overworld_library"]->getSprite().setPosition(400,300);
+    overworld_buttons["overworld_bakery"]->getSprite().setPosition(400,0);
     overworld_buttons["overworld_forrest"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
     overworld_buttons["overworld_menu"]->getSprite().setColor(sf::Color(255, 255, 255, 0));
     overworld_buttons["overworld_library"]->getSprite().setColor(sf::Color(255, 255, 255, 0));

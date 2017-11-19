@@ -23,6 +23,10 @@ int main () {
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600), "MarkovLove");
     gui* my_gui = new gui(window);
     // START OF GAME LOOP
+
+    //std::cout << my_gui->overworld_buttons["overworld_forrest"].getRect().height << std::endl;
+    //std::cout << my_gui->overworld_buttons["overworld_forrest"].getRect().width << std::endl;
+
     while (window->isOpen()) {
         // INPUTS
         // check all the window's events that were triggered since the last iteration of the loop
