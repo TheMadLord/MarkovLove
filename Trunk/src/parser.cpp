@@ -170,8 +170,8 @@ std::vector<std::string>ConversationHandler::getStartText(){
     std::cout << "2" << std::endl;
     srand(time(NULL));
     std::cout << "2.5" << std::endl;
-    //int i = rand() % convo->entrypoints.size(); // THIS IS WHERE IT'S CRASHING.
-    int i = 1;
+    int i = rand() % convo->entrypoints.size(); // THIS IS WHERE IT'S CRASHING.
+    //int i = 1;
     std::cout << "3" << std::endl;
     int j;
     do {

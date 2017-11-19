@@ -74,6 +74,10 @@ gui::gui(sf::RenderWindow* window) {
     buttons["overworld_menu"] = button("overworld_forrest", "overworld_menu");
     buttons["overworld_library"] = button("overworld_forrest", "overworld_library");
     buttons["overworld_bakery"] = button("overworld_forrest", "overworld_bakery");
+    buttons["dialog_option_1"] = button("dialog_option_1");
+    buttons["dialog_option_2"] = button("dialog_option_2");
+    buttons["back_to_menu"] = button("back_to_menu");
+    buttons["give_gift"] = button("give_gift");
 
     // button groups
     main_menu_buttons["play"] = &buttons["main_menu_play"];
@@ -93,6 +97,15 @@ gui::gui(sf::RenderWindow* window) {
     overworld_buttons["overworld_menu"]->getSprite().setColor(sf::Color(0, 0, 255, 127));
     overworld_buttons["overworld_library"]->getSprite().setColor(sf::Color(0, 255, 0, 128));
     overworld_buttons["overworld_bakery"]->getSprite().setColor(sf::Color(255, 0, 0, 128));
+
+    date_buttons["dialog_option_1"] = &buttons["dialog_option_1"];
+    date_buttons["dialog_option_2"] = &buttons["dialog_option_2"];
+    date_buttons["back_to_menu"] = &buttons["back_to_menu"];
+    date_buttons["give_gift"] = &buttons["give_gift"];
+    date_buttons["dialog_option_1"]->getSprite().setPosition(20,420);
+    date_buttons["dialog_option_2"]->getSprite().setPosition(20,510);
+    date_buttons["back_to_menu"]->getSprite().setPosition(240,420);
+    date_buttons["give_gift"]->getSprite().setPosition(110,420);
 
     // set current-strings
     current_background = "main_menu_bkg";

@@ -16,7 +16,7 @@ public:
     std::string current_background;
     std::string current_girl;
     std::string current_state; // "menu", "date", "overworld"
-    std::map<std::string, button*> on_date_buttons;
+    std::map<std::string, button*> date_buttons;
     std::map<std::string, button*> main_menu_buttons;
     std::map<std::string, button*> overworld_buttons;
     std::map<std::string,button_function> button_functions;

@@ -95,9 +95,10 @@ int main () {
                             } else if (iter->second->getName() == "give_gift"){
                                 //open inventory
                                 // ha like we're going to get that done
-                            } else if (iter->second->getName() == "run_away"){
+                            } else if (iter->second->getName() == "back_to_menu"){
                                 my_gui->current_state = "overworld";
                                 my_gui->current_background = "map_bkg";
+                                my_gui->current_girl = "none";
                             } else {
                                 std::cout << "not a button" << std::endl;
                             }
@@ -140,7 +141,7 @@ int main () {
                 my_gui->my_window->draw(iter->second->getSprite());
             }
         } else if (my_gui->current_state == "date"){
-            for (std::map<std::string, button*>::iterator iter = my_gui->on_date_buttons.begin(); iter != my_gui->on_date_buttons.end(); iter++) {
+            for (std::map<std::string, button*>::iterator iter = my_gui->date_buttons.begin(); iter != my_gui->date_buttons.end(); iter++) {
                 my_gui->my_window->draw(iter->second->getSprite());
             }
 
