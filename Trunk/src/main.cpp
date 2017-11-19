@@ -46,7 +46,7 @@ int main () {
                             if (iter->second->getName() == "main_menu_play"){
                                 my_gui->current_state = "overworld";
                                 my_gui->current_background = "map_bkg";
-                                my_gui->current_girl = "Virgo";
+                                //my_gui->current_girl = "Virgo";
                             } else if (iter->second->getName() == "main_menu_options") {
                                 //my_gui->current_state =
                                 std::cout << "\noptions" << std::endl;
@@ -121,16 +121,28 @@ int main () {
             for (std::map<std::string, button*>::iterator iter = my_gui->on_date_buttons.begin(); iter != my_gui->on_date_buttons.end(); iter++) {
                 my_gui->my_window->draw(iter->second->getSprite());
             }
-            my_gui->my_window->draw(my_gui->getGirl(my_gui->current_girl));
             // DRAW DATE TEXT
         } else if (my_gui->current_state == "overworld"){
             for (std::map<std::string, button*>::iterator iter = my_gui->overworld_buttons.begin(); iter != my_gui->overworld_buttons.end(); iter++) {
                 my_gui->my_window->draw(iter->second->getSprite());
             }
-            my_gui->my_window->draw(my_gui->getGirl(my_gui->current_girl));
         } else {
             std::cout << "CURRENT STATE NOT VALID" << std::endl;
             my_gui->my_window->close();
+        }
+
+        if (my_gui->current_girl != "none"){
+            if (GIRL_MOOD_ANGRY) {
+                my_gui->my_window->draw(my_gui->Virgo_sprites["Virgo_Angry"]);
+            } else if (GIRL_MOOD_HAPPY) {
+                my_gui->my_window->draw(my_gui->Virgo_sprites["Virgo_Happy"]);
+            } else if (GIRL_MOOD_LOVE) {
+                my_gui->my_window->draw(my_gui->Virgo_sprites["Virgo_Love"]);
+            } else if (GIRL_MOOD_SAD) {
+                my_gui->my_window->draw(my_gui->Virgo_sprites["Virgo_Sad"]);
+            } else {
+                std::cout << "The Girl Maybe Isn't Instantiated ... ?" << std::endl;
+            }
         }
 
         // --- AND HERE.

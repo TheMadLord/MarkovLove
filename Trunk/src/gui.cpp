@@ -11,45 +11,37 @@ gui::gui(sf::RenderWindow* window) {
     if (!my_font.loadFromFile("calibri.ttf")) { std::cout << "ERROR WITH LOADING FONT" << std::endl; }
 
     // initialize maps
-    //girls - test
-    sf::Texture girl_1_u;
-    if (!girl_1_u.loadFromFile("girl_1_u.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
-    sf::Texture girl_1_h;
-    if (!girl_1_h.loadFromFile("girl_1_h.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
-    sf::Texture girl_1_s;
-    if (!girl_1_s.loadFromFile("girl_1_s.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
-    girls_textures["girl_1_u"] = girl_1_u;
-    girls_textures["girl_1_h"] = girl_1_h;
-    girls_textures["girl_1_s"] = girl_1_s;
-    sf::Sprite sprite;
-    sprite.setTexture(girls_textures["girl_1_u"]);
-    girls_sprites["girl_1_upset"] = sprite;
-    sprite.setTexture(girls_textures["girl_1_h"]);
-    girls_sprites["girl_1_happy"] = sprite;
-    sprite.setTexture(girls_textures["girl_1_s"]);
-    girls_sprites["girl_1_sad"] = sprite;
 
     //Virgo
     sf::Texture V_E;
     if (!V_E.loadFromFile("Virgo_Enamored.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    Virgo_textures["Virgo_Enamored"] = V_E;
     sf::Sprite V_E_s;
-    V_E_s.setTexture(V_E);
+    V_E_s.setTexture(Virgo_textures["Virgo_Enamored"]);
     Virgo_sprites["Virgo_Enamored"] = V_E_s;
     sf::Texture V_A;
     if (!V_A.loadFromFile("Virgo_Angry.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    Virgo_textures["Virgo_Angry"] = V_A;
     sf::Sprite V_A_s;
-    V_A_s.setTexture(V_A);
+    V_A_s.setTexture(Virgo_textures["Virgo_Angry"]);
     Virgo_sprites["Virgo_Angry"] = V_A_s;
     sf::Texture V_S;
     if (!V_S.loadFromFile("Virgo_Sad.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    Virgo_textures["Virgo_Sad"] = V_S;
     sf::Sprite V_S_s;
-    V_S_s.setTexture(V_S);
+    V_S_s.setTexture(Virgo_textures["Virgo_Sad"]);
     Virgo_sprites["Virgo_Sad"] = V_S_s;
     sf::Texture V_H;
-    if (!V_H.loadFromFile("Virgo_Enamored.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    if (!V_H.loadFromFile("Virgo_Happy.png")) { std::cout << "ERROR WITH LOADING image" << std::endl; }
+    Virgo_textures["Virgo_Happy"] = V_H;
     sf::Sprite V_H_s;
-    V_H_s.setTexture(V_H);
+    V_H_s.setTexture(Virgo_textures["Virgo_Happy"]);
     Virgo_sprites["Virgo_Happy"] = V_H_s;
+
+    for (std::map<std::string, sf::Sprite>::iterator iter = Virgo_sprites.begin(); iter != Virgo_sprites.end(); iter++) {
+        iter->second.setScale(sf::Vector2f(0.5f, 0.5f));
+        iter->second.setPosition(150,-40);
+    }
 
     // bkgs
     sf::Texture t;
@@ -130,10 +122,11 @@ void gui::update(float deltaTime) { // 2 - identifier, text to draw ?
         //std::cout << iter->first << std::endl; // prints name of thing getting drawn
     }
     */
-    my_window->draw(girls_sprites.begin()->second);
+    //my_window->draw(girls_sprites.begin()->second);
 
 }
 
+/*
 sf::Sprite gui::getGirl(std::string name){
     // find girl by string key
     if (name == "none") { return sf::Sprite(); }
@@ -145,6 +138,7 @@ sf::Sprite gui::getGirl(std::string name){
         return iter->second;
     }
 }
+*/
 
 sf::Sprite gui::getBkg(std::string name){
     // find girl by string key
