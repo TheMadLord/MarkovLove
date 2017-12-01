@@ -16,6 +16,8 @@
 
 using namespace std;
 
+// <3<3<3<3
+
 int main () {
     bool click = false;
     bool beginning_of_date = true;
